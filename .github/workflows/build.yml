@@ -70,3 +70,10 @@ jobs:
             sudo docker stop next-app || true
             sudo docker rm next-app || true
             sudo docker run -d --name next-app -p 80:3000 ${{ secrets.DOCKER_USERNAME }}/next-app:latest
+      - name: ✅ Health Check (Post Deploy)
+        run: |
+          curl -f http://${{ env.EC2_IP }} || (echo "Health check failed!" && exit 1)
+
+      - name: 🛑 Auto-Stop EC2
+        run: |
+          aws ec2 stop-instances --instance-ids ${{ secrets.EC2_INSTANCE_ID }}
