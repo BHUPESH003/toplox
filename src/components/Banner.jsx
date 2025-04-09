@@ -18,7 +18,7 @@ const Banner = ({ title }) => {
         <div className="mt-4 md:mt-0">
           <ul className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-white font-medium">
             <Link href="/" className="hover:text-orange-400 transition">
-              Home
+              Home1234
             </Link>
             <Link href="/about" className="hover:text-orange-400 transition">
               About Us
